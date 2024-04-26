@@ -20,7 +20,7 @@ const Navbar = () => {
         };
       }}
       >Home</NavLink></li>
-      <li><NavLink className="font-bold" to="allTouristsSpot"
+      <li><NavLink className="font-bold" to="/allTouristsSpot"
       style={({ isActive }) => {
         return {
         //   fontWeight: isActive ? "bold" : "",
