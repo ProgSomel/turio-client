@@ -6,12 +6,17 @@ import Registration from "../pages/Register/Register";
 import MainLayout from "./../layout/MainLayout/MainLayout";
 import { createBrowserRouter } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
+import Home from "../pages/Home/Home";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
     children: [
+        {
+            path: "/",
+            element: <Home></Home>
+        },
         {
             path: "/allTouristsSpot",
             element: <AllTouristsSpot></AllTouristsSpot>
