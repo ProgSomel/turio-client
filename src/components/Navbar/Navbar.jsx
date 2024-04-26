@@ -1,7 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
 
 import homeLogo from "../../../src/assets/logo/home.svg";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import swal from "sweetalert";
+import toast from "react-hot-toast";
+import { FaArrowRightToBracket } from "react-icons/fa6";
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
   const navLinks = (
     <>
       <li><NavLink className="font-bold" to="/"
@@ -9,7 +15,7 @@ const Navbar = () => {
         return {
         //   fontWeight: isActive ? "bold" : "",
         //   color: isActive ? "red" : "black",
-        backgroundColor: isActive ? "green" : "black"
+        backgroundColor: isActive ? "green" : ""
          
         };
       }}
@@ -47,6 +53,17 @@ const Navbar = () => {
     </>
   );
 
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        swal("Successfully logged Out!", "success");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
+
   return (
     <div className="max-w-6xl mx-auto px-4 md:px-2 ">
       <div className="navbar bg-base-100">
@@ -74,10 +91,39 @@ const Navbar = () => {
             >
                 {navLinks}
 
+            {
+                user ? 
+                <div className="navbar-end w-full mt-5  flex  justify-center ">
+                  {/*! Profile  */}
+                  <div className="">
+                    <div className="dropdown dropdown-end  ">
+                      <div className="tooltip " data-tip={user?.displayName}>
+                        <img
+                          className="w-10 rounded-full"
+                          alt="profile"
+                          src={user?.photoURL}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <Link
+                    onClick={handleLogOut}
+                    className="btn btn-outline btn-error flex"
+                  >
+                    <FaArrowRightToBracket />
+                    Log Out
+                  </Link>
+                </div>
+                 : 
                 <div className="navbar-end mt-3 gap-2 flex flex-col md:hidden w-full">
-          <button className="btn bg-green-700 text-white font-bold ">Login</button>
-          <button className="btn bg-green-700 text-white font-bold">Register</button>
+         <Link className="w-full" to="login">
+         <button className="btn w-full bg-green-700 text-white font-bold ">Login</button>
+         </Link>
+          <Link className="w-full" to="/regsiter"> 
+          <button className="btn w-full bg-green-700 text-white font-bold">Register</button>
+          </Link>
         </div>
+            }
             </ul>
 
           
@@ -92,10 +138,39 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <div className="navbar-end  gap-5 hidden md:flex">
+        {
+            user ?
+            <div className="navbar-end hidden md:flex">
+            {/*! Profile  */}
+            <div>
+              <div className="dropdown dropdown-end">
+                <div className="tooltip" data-tip={user?.displayName}>
+                  <img
+                    className="w-10 rounded-full"
+                    alt="profile"
+                    src={user?.photoURL}
+                  />
+                </div>
+              </div>
+            </div>
+            <Link
+              onClick={handleLogOut}
+              className="btn  ml-4 btn-outline btn-error"
+            >
+              <FaArrowRightToBracket />
+              Log Out
+            </Link>
+          </div>
+            : 
+            <div className="navbar-end  gap-5 hidden md:flex">
+          <Link to="/login">
           <button className="btn bg-green-700 text-white font-bold">Login</button>
-          <button className="btn bg-green-700 text-white font-bold">Register</button>
+          </Link>
+         <Link to="/register">
+         <button className="btn bg-green-700 text-white font-bold">Register</button>
+         </Link>
         </div>
+        }
       </div>
     </div>
   );
