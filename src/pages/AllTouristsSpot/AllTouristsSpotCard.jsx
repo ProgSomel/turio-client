@@ -1,22 +1,21 @@
-import { PropTypes } from "prop-types";
-import { CiClock2 } from "react-icons/ci";
-import { BsPeople } from "react-icons/bs";
-import { FaArrowRightLong } from "react-icons/fa6";
-import { TiWeatherCloudy } from "react-icons/ti";
 
-const SpotCard = ({ spot }) => {
-  const {
-    imageUrl,
-    touristsSpotName,
-    averageCost,
-    seasonality,
-    travelTime,
-    totalVisitorsPerYear,
-    
-  } = spot;
-
-  return (
-    <div className="">
+import { PropTypes } from 'prop-types';
+import { BsPeople } from 'react-icons/bs';
+import { CiClock2 } from 'react-icons/ci';
+import { FaArrowRightLong } from 'react-icons/fa6';
+import { TiWeatherCloudy } from 'react-icons/ti';
+const AllTouristsSpotCard = ({spot}) => {
+    const {
+        imageUrl,
+        touristsSpotName,
+        averageCost,
+        seasonality,
+        travelTime,
+        totalVisitorsPerYear,
+        
+      } = spot;
+    return (
+        <div className="">
       <div className="card h-[500px]  bg-base-100 shadow-xl">
         <div className="relative">
         <figure>
@@ -52,11 +51,13 @@ const SpotCard = ({ spot }) => {
         </div>
       </div>
     </div>
-  );
+    );
 };
 
-SpotCard.propTypes = {
-  spot: PropTypes.object,
+
+AllTouristsSpotCard.propTypes = {
+    spot: PropTypes.object
 };
 
-export default SpotCard;
+
+export default AllTouristsSpotCard;

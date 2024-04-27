@@ -20,7 +20,8 @@ const router = createBrowserRouter([
         },
         {
             path: "/allTouristsSpot",
-            element: <AllTouristsSpot></AllTouristsSpot>
+            element: <AllTouristsSpot></AllTouristsSpot>,
+            
         },
         {
             path: "/addTouristSpot",
