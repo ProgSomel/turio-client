@@ -8,11 +8,13 @@ import { createBrowserRouter } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import Home from "../pages/Home/Home";
 import TouristSpotDetails from "../pages/TouristspotDetails/TouristSpotDetails";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
         {
             path: "/",
@@ -26,7 +28,9 @@ const router = createBrowserRouter([
         },
         {
             path: "/spotDetails/:id",
-            element: <TouristSpotDetails></TouristSpotDetails>,
+            element: <ProtectedRoute>
+                <TouristSpotDetails></TouristSpotDetails>
+            </ProtectedRoute>,
             loader: ({params})=> fetch(`http://localhost:5000/spots/${params.id}`)
         },
         {
