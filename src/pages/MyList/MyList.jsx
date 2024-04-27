@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
 
 const MyList = () => {
   const { user } = useContext(AuthContext);
@@ -13,6 +14,63 @@ const MyList = () => {
         setMyList(data);
       });
   }, [user?.email]);
+
+
+  const handleSubmit = (e, id) => {
+    console.log(id);
+    e.preventDefault();
+    const form = e.target;
+    const imageUrl = form.imageUrl.value;
+const touristsSpotName = form.touristsSpotName.value;
+const countryName = form.countryName.value;
+const location = form.location.value;
+const shortDescription = form.shortDescription.value;
+const averageCost = form.averageCost.value;
+const seasonality = form.seasonality.value;
+const travelTime = form.travelTime.value;
+const totalVisitorsPerYear = form.totalVisitorsPerYear.value;
+const userEmail = form.userEmail.value;
+const userName = form.userName.value;
+
+const spotsData = {
+imageUrl,
+touristsSpotName,
+countryName,
+location,
+shortDescription,
+averageCost,
+seasonality,
+travelTime,
+totalVisitorsPerYear,
+userEmail,
+userName,
+};
+
+fetch(`http://localhost:5000/spots/${id}`, {
+method: "PUT",
+headers: {
+    'content-type': 'application/json'
+},
+body: JSON.stringify(spotsData)
+})
+.then(res => res.json())
+.then(data => {
+console.log(data);
+if(data.modifiedCount > 0) {
+    toast.success('Spot Successfully Updated', {
+        position: 'top-right',
+    });
+    fetch(`http://localhost:5000/spots/${user?.email}`)
+          .then((res) => res.json())
+          .then((updatedData) => {
+            // Update the state with the updated list
+            setMyList(updatedData);
+          });
+}
+})
+
+}
+
   return (
     <div className="flex justify-center my-12 max-w-6xl mx-auto px-4 md:px-2 shadow-xl min-h-screen">
       <div className="overflow-x-auto">
@@ -54,7 +112,7 @@ const MyList = () => {
                         </button>
                       </form>
                       <div>
-                        <form
+                        <form onSubmit={(e)=>handleSubmit(e, myList?._id)}
                          
                           className="max-w-lg mx-auto px-4 py-8 bg-white shadow-lg rounded-lg mt-8"
                         >
@@ -254,6 +312,7 @@ const MyList = () => {
           </tbody>
         </table>
       </div>
+      <Toaster/>
     </div>
   );
 };
