@@ -4,8 +4,10 @@ import { BsPeople } from 'react-icons/bs';
 import { CiClock2 } from 'react-icons/ci';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { TiWeatherCloudy } from 'react-icons/ti';
+import { Link } from 'react-router-dom';
 const AllTouristsSpotCard = ({spot}) => {
     const {
+        _id,
         imageUrl,
         touristsSpotName,
         averageCost,
@@ -42,7 +44,9 @@ const AllTouristsSpotCard = ({spot}) => {
             <p className="flex items-center gap-2"><span className="text-orange-400 font-bold "><BsPeople /></span><span className="font-extralight">{totalVisitorsPerYear}</span></p>
           </div>
           <div className="flex items-center gap-4">
-            <button className="border border-green-300 px-5 text-green-500 font-bold rounded-md flex items-center gap-2 hover:bg-green-900">VIEW DETAILS <span className="text-green-300"><FaArrowRightLong /></span></button>
+           <Link to={`/spotDetails/${_id}`}>
+           <button className="border border-green-300 px-5 text-green-500 font-bold rounded-md flex items-center gap-2 hover:bg-green-900">VIEW DETAILS <span className="text-green-300"><FaArrowRightLong /></span></button>
+           </Link>
             <div>
                 <p className="">Average Cost</p>
             <p className="text-green-600 font-bold">{averageCost}</p>
