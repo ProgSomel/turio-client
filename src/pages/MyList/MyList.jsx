@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const MyList = () => {
   const { user } = useContext(AuthContext);
@@ -58,7 +59,9 @@ body: JSON.stringify(spotsData)
 console.log(data);
 if(data.modifiedCount > 0) {
     toast.success('Spot Successfully Updated', {
-        position: 'top-right',
+        position: 'top-left',
+     
+        
     });
     fetch(`http://localhost:5000/spots/${user?.email}`)
           .then((res) => res.json())
@@ -69,6 +72,27 @@ if(data.modifiedCount > 0) {
 }
 })
 
+}
+
+
+const handleDelete = (id) => {
+    console.log(id);
+    fetch(`http://localhost:5000/spots/${id}`, {
+        method: 'DELETE',
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.deletedCount > 0) {
+            Swal.fire({
+                icon: "success",
+                title: "Success!",
+                text: "Spot Deleted Successfully",
+                confirmButtonText: "Cool",
+              });
+              const remaining = myLists?.filter((myList)=> myList._id !== id);
+              setMyList(remaining);
+        }
+    })
 }
 
   return (
@@ -98,12 +122,12 @@ if(data.modifiedCount > 0) {
                   <button
                     className="btn"
                     onClick={() =>
-                      document.getElementById("my_modal_3").showModal()
+                      document.getElementById(`my_modal_${myList._id}`).showModal()
                     }
                   >
                     Update
                   </button>
-                  <dialog id="my_modal_3" className="modal">
+                  <dialog id={`my_modal_${myList._id}`} className="modal">
                     <div className="modal-box">
                       <form method="dialog">
                         {/* if there is a button in form, it will close the modal */}
@@ -293,7 +317,7 @@ if(data.modifiedCount > 0) {
                           </div>
                           <div className="flex items-center justify-between">
                             <button
-                              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+                              className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
                               type="submit"
                             >
                               Update
@@ -305,7 +329,7 @@ if(data.modifiedCount > 0) {
                   </dialog>
                 </td>
                 <td>
-                  <button className="btn">Delete</button>
+                  <button onClick={()=>handleDelete(myList?._id)} className="btn">Delete</button>
                 </td>
               </tr>
             ))}
