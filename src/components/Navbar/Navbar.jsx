@@ -93,7 +93,7 @@ const Navbar = () => {
 
             {
                 user ? 
-                <div className="navbar-end w-full mt-5  flex  justify-center ">
+                <div className="navbar-end w-full mt-5  flex  justify-center md:hidden">
                   {/*! Profile  */}
                   <div className="">
                     <div className="dropdown dropdown-end  ">
@@ -115,7 +115,7 @@ const Navbar = () => {
                   </Link>
                 </div>
                  : 
-                <div className="navbar-end mt-3 gap-2 flex flex-col md:hidden w-full">
+                <div className="navbar-end mt-3 gap-2 flex flex-col lg:hidden w-full">
          <Link className="w-full" to="login">
          <button className="btn w-full bg-green-700 text-white font-bold ">Login</button>
          </Link>
