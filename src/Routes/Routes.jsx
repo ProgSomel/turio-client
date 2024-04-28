@@ -17,47 +17,53 @@ const router = createBrowserRouter([
     element: <MainLayout></MainLayout>,
     errorElement: <ErrorPage></ErrorPage>,
     children: [
-        {
-            path: "/",
-            element: <Home></Home>,
-            loader: ()=> fetch("http://localhost:5000/spots")
-        },
-        {
-            path: "/allTouristsSpot",
-            element: <AllTouristsSpot></AllTouristsSpot>,
-            
-        },
-        {
-            path: "/spotDetails/:id",
-            element: <ProtectedRoute>
-                <TouristSpotDetails></TouristSpotDetails>
-            </ProtectedRoute>,
-            loader: ({params})=>fetch(`http://localhost:5000/spots/${params.id}`)
-        },
-        {
-            path: "/addTouristSpot",
-            element: <ProtectedRoute>
-                <AddTouristSpot></AddTouristSpot>
-            </ProtectedRoute>
-        },
-        {
-            path: "/myList",
-            element: <ProtectedRoute>
-                <MyList></MyList>
-            </ProtectedRoute>
-        },
-        {
-            path: "/touristSpotByCountry/:countryName",
-            element: <TouristSpotsByCountry></TouristSpotsByCountry>
-        },
-        {
-            path: "/login",
-            element: <Login></Login>
-        },
-        {
-            path: "/register",
-            element: <Registration></Registration>
-        }
+      {
+        path: "/",
+        element: <Home></Home>,
+        loader: () => fetch("https://turio-server.vercel.app/spots"),
+      },
+      {
+        path: "/allTouristsSpot",
+        element: <AllTouristsSpot></AllTouristsSpot>,
+      },
+      {
+        path: "/spotDetails/:id",
+        element: (
+          <ProtectedRoute>
+            <TouristSpotDetails></TouristSpotDetails>
+          </ProtectedRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`https://turio-server.vercel.app/spots/${params.id}`),
+      },
+      {
+        path: "/addTouristSpot",
+        element: (
+          <ProtectedRoute>
+            <AddTouristSpot></AddTouristSpot>
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/myList",
+        element: (
+          <ProtectedRoute>
+            <MyList></MyList>
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/touristSpotByCountry/:countryName",
+        element: <TouristSpotsByCountry></TouristSpotsByCountry>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Registration></Registration>,
+      },
     ],
   },
 ]);

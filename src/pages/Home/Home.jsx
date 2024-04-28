@@ -5,7 +5,7 @@ import SpotCard from "./SpotCard/SpotCard";
 import Countries from "./Countries/Countries";
 import { Fade, Slide } from "react-awesome-reveal";
 import contactImg from "../../assets/images/contact/contact.jpg";
-import reviewImg from "../../assets//images//reviews/review.jpg";
+import reviewImg from "../../assets/images/reviews/review.jpg";
 import { Pagination } from "swiper/modules";
 import menLogo from "../../assets/icons/men.png"
 import { CiStar } from "react-icons/ci";

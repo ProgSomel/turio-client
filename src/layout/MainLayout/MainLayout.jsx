@@ -23,12 +23,12 @@ const MainLayout = () => {
   };
 
   return (
-    <div className={darkMode ? "bg-black text-red-400 " : ""}>
+    <div className={darkMode ? "bg-black text-green-400 " : " "}>
       <div
         className={
           darkMode
-            ? "cursor-pointer grid place-items-center   absolute left-[100px] md:left-[300px] lg:left-[550px] top-11 -right-0"
-            : "cursor-pointer grid place-items-center absolute left-[100px] md:left-[300px] lg:left-[550px] top-11 -right-0"
+            ? "cursor-pointer grid place-items-center   absolute left-[100px] md:left-[650px] lg:left-[1050px] top-10 -right-0"
+            : "cursor-pointer grid place-items-center absolute left-[100px] md:left-[650px] lg:left-[1050px] top-10 -right-0"
         }
       >
         <label className="cursor-pointer grid place-items-center">

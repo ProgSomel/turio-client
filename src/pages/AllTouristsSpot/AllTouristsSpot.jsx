@@ -2,24 +2,20 @@ import AllTouristsSpotCard from "./AllTouristsSpotCard";
 import { useEffect, useState } from "react";
 
 const AllTouristsSpot = () => {
-
   const [touristSpots, setTouristSpots] = useState([]);
   const [sort, setSort] = useState("");
 
-
-
- useEffect(()=> {
-    fetch(`http://localhost:5000/spots?sort=${sort}`)
-    .then(res => res.json())
-    .then(data => {
+  useEffect(() => {
+    fetch(`https://turio-server.vercel.app/spots?sort=${sort}`)
+      .then((res) => res.json())
+      .then((data) => {
         setTouristSpots(data);
-    })
- }, [sort])
+      });
+  }, [sort]);
 
   const handleSortChange = (e) => {
     setSort(e.target.value);
-  }
-  
+  };
 
   return (
     <div>

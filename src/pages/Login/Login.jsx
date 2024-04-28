@@ -68,15 +68,15 @@ const Login = () => {
   };
 
   return (
-    <div className="mt-12">
+    <div className="mt-12 max-w-lg mx-auto  px-2">
       <h1 className="text-center text-orange-500 italic text-5xl font-bold">Welcome Back</h1>
       <div className="px-2 md:px-4 lg:px-8 md:mb-12 flex flex-col-reverse md:flex-row items-center">
-      <div className="md:w-1/2  flex justify-center">
-        <Lottie className="md:h-[500px]" animationData={loginLottie}></Lottie>
+      <div className="  flex justify-center">
+        <Lottie className="md:h-[500px] w-full" animationData={loginLottie}></Lottie>
       </div>
       <div>
       
-      <div className="max-w-lg mx-auto mt-4 px-2 border-2 border-orange-200  p-6 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded-lg shadow-md ">
+      <div className=" border-2 border-orange-200  p-6 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded-lg shadow-md ">
         <h2 className="text-3xl font-semibold text-white mb-4 ">Login</h2>
         <form onSubmit={handleLogin}>
           <div className="mb-4">
@@ -107,12 +107,14 @@ const Login = () => {
               )}
             </span>
           </div>
-          <button
+         <div>
+           <button
             type="submit"
             className="w-full bg-white text-pink-600 font-semibold px-4 py-2 rounded-lg hover:bg-opacity-75 transition duration-300 mb-4"
           >
             Login
           </button>
+         </div>
           <div className="flex justify-between">
             <button
               onClick={handleGoogleLogin}

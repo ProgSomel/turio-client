@@ -8,73 +8,66 @@ const MyList = () => {
   const [myLists, setMyList] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/spots?email=${user?.email}`)
+    fetch(`https://turio-server.vercel.app/spots?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setMyList(data);
       });
   }, [user?.email]);
 
-
   const handleSubmit = (e, id) => {
     e.preventDefault();
     const form = e.target;
     const imageUrl = form.imageUrl.value;
-const touristsSpotName = form.touristsSpotName.value;
-const countryName = form.countryName.value;
-const location = form.location.value;
-const shortDescription = form.shortDescription.value;
-const averageCost = form.averageCost.value;
-const seasonality = form.seasonality.value;
-const travelTime = form.travelTime.value;
-const totalVisitorsPerYear = form.totalVisitorsPerYear.value;
-const userEmail = form.userEmail.value;
-const userName = form.userName.value;
+    const touristsSpotName = form.touristsSpotName.value;
+    const countryName = form.countryName.value;
+    const location = form.location.value;
+    const shortDescription = form.shortDescription.value;
+    const averageCost = form.averageCost.value;
+    const seasonality = form.seasonality.value;
+    const travelTime = form.travelTime.value;
+    const totalVisitorsPerYear = form.totalVisitorsPerYear.value;
+    const userEmail = form.userEmail.value;
+    const userName = form.userName.value;
 
-const spotsData = {
-imageUrl,
-touristsSpotName,
-countryName,
-location,
-shortDescription,
-averageCost,
-seasonality,
-travelTime,
-totalVisitorsPerYear,
-userEmail,
-userName,
-};
+    const spotsData = {
+      imageUrl,
+      touristsSpotName,
+      countryName,
+      location,
+      shortDescription,
+      averageCost,
+      seasonality,
+      travelTime,
+      totalVisitorsPerYear,
+      userEmail,
+      userName,
+    };
 
-fetch(`http://localhost:5000/spots/${id}`, {
-method: "PUT",
-headers: {
-    'content-type': 'application/json'
-},
-body: JSON.stringify(spotsData)
-})
-.then(res => res.json())
-.then(data => {
-if(data.modifiedCount > 0) {
-    toast.success('Spot Successfully Updated', {
-        position: 'top-left',
-     
-        
-    });
-    fetch(`http://localhost:5000/spots?email=${user?.email}`)
-          .then((res) => res.json())
-          .then((updatedData) => {
-            // Update the state with the updated list
-            setMyList(updatedData);
+    fetch(`https://turio-server.vercel.app/spots/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(spotsData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          toast.success("Spot Successfully Updated", {
+            position: "top-left",
           });
-}
-})
+          fetch(`https://turio-server.vercel.app/spots?email=${user?.email}`)
+            .then((res) => res.json())
+            .then((updatedData) => {
+              // Update the state with the updated list
+              setMyList(updatedData);
+            });
+        }
+      });
+  };
 
-}
-
-
-const handleDelete = (id) => {
-
-
+  const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -82,35 +75,28 @@ const handleDelete = (id) => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-
-
-        fetch(`http://localhost:5000/spots/${id}`, {
-          method: 'DELETE',
-      })
-      .then(res => res.json())
-      .then(data => {
-        
-          if(data.deletedCount > 0) {
+        fetch(`https://turio-server.vercel.app/spots/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
               Swal.fire({
-                  icon: "success",
-                  title: "Success!",
-                  text: "Tourist Spot Deleted Successfully",
-                  confirmButtonText: "Cool",
-                });
-                const remaining = myLists?.filter((myList)=> myList._id !== id);
-                setMyList(remaining);
-          }
-      })
-
-        
+                icon: "success",
+                title: "Success!",
+                text: "Tourist Spot Deleted Successfully",
+                confirmButtonText: "Cool",
+              });
+              const remaining = myLists?.filter((myList) => myList._id !== id);
+              setMyList(remaining);
+            }
+          });
       }
     });
-
-   
-}
+  };
 
   return (
     <div className="flex justify-center py-12 max-w-6xl mx-auto px-5 md:px-2 shadow-xl min-h-screen">
@@ -139,7 +125,9 @@ const handleDelete = (id) => {
                   <button
                     className="btn"
                     onClick={() =>
-                      document.getElementById(`my_modal_${myList._id}`).showModal()
+                      document
+                        .getElementById(`my_modal_${myList._id}`)
+                        .showModal()
                     }
                   >
                     Update
@@ -153,8 +141,8 @@ const handleDelete = (id) => {
                         </button>
                       </form>
                       <div>
-                        <form onSubmit={(e)=>handleSubmit(e, myList?._id)}
-                         
+                        <form
+                          onSubmit={(e) => handleSubmit(e, myList?._id)}
                           className="max-w-lg mx-auto px-4 py-8 bg-white shadow-lg rounded-lg mt-8"
                         >
                           <h2 className="text-3xl font-semibold mb-6 text-center text-blue-600">
@@ -346,14 +334,19 @@ const handleDelete = (id) => {
                   </dialog>
                 </td>
                 <td>
-                  <button onClick={()=>handleDelete(myList?._id)} className="btn">Delete</button>
+                  <button
+                    onClick={() => handleDelete(myList?._id)}
+                    className="btn"
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <Toaster/>
+      <Toaster />
     </div>
   );
 };

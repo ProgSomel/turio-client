@@ -1,6 +1,6 @@
 
 # Website_Name: Turio
-# Live_Link: https://prime-property-2a07e.web.app/
+# Live_Link: https://turio-4ebb1.web.app
 
 # 1.  Project features 🔥
 
@@ -23,9 +23,18 @@
 ## Dark and Light Mode Toggling:
 -There is a toggling button on Navbar. User can toggle between dark and light mode by clicking this button
 
-# 2. NPM Packages Used 🔥
+# 2. Selected Category 🔥
 
--AOS Package
+#South Asia:
+-Bangladesh
+-Thailand
+-Indonesia
+-Malaysia
+-Vietnam
+-Cambodia
+
+# 3. NPM Packages Used 🔥
+
 -Animate.css
--React-leaflet
--Swiper slider
+-Lottie-react
+-React Awesome Reveal

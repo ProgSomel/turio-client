@@ -63,6 +63,7 @@ const Navbar = () => {
         toast.error(error.message);
       });
   };
+  
 
   return (
     <div className="max-w-6xl mx-auto px-5 md:px-2 mb-5 pt-5">
@@ -140,7 +141,7 @@ const Navbar = () => {
         </div>
         {
             user ?
-            <div className="navbar-end hidden md:flex">
+            <div className="navbar-end hidden md:flex pr-32">
             {/*! Profile  */}
             <div>
               <div className="dropdown dropdown-end">
@@ -162,7 +163,7 @@ const Navbar = () => {
             </Link>
           </div>
             : 
-            <div className="navbar-end  gap-5 hidden md:flex">
+            <div className="navbar-end pr-32 gap-5 hidden md:flex">
           <Link to="/login">
           <button className="btn bg-green-700 text-white font-bold hover:bg-green-200 hover:cursor-pointer ">Login</button>
           </Link>
