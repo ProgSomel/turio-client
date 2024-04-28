@@ -9,7 +9,7 @@ const MyList = () => {
 
   console.log(user?.email);
   useEffect(() => {
-    fetch(`http://localhost:5000/spots/${user?.email}`)
+    fetch(`http://localhost:5000/spots?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setMyList(data);
@@ -63,7 +63,7 @@ if(data.modifiedCount > 0) {
      
         
     });
-    fetch(`http://localhost:5000/spots/${user?.email}`)
+    fetch(`http://localhost:5000/spots?email=${user?.email}`)
           .then((res) => res.json())
           .then((updatedData) => {
             // Update the state with the updated list

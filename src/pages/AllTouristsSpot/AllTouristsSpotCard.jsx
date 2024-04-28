@@ -1,7 +1,7 @@
 
 import { PropTypes } from 'prop-types';
 import { BsPeople } from 'react-icons/bs';
-import { CiClock2 } from 'react-icons/ci';
+import { CiClock2, CiLocationOn } from 'react-icons/ci';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { TiWeatherCloudy } from 'react-icons/ti';
 import { Link } from 'react-router-dom';
@@ -14,11 +14,13 @@ const AllTouristsSpotCard = ({spot}) => {
         seasonality,
         travelTime,
         totalVisitorsPerYear,
+        location,
+        countryName
         
       } = spot;
     return (
         <div className="">
-      <div className="card h-[500px]  bg-base-100 shadow-xl">
+      <div className="card h-[550px]   bg-base-100 shadow-xl">
         <div className="relative">
         <figure>
 
@@ -41,8 +43,16 @@ const AllTouristsSpotCard = ({spot}) => {
           </div>
           </div>
           <div className="mb-3">
-            <p className="flex items-center gap-2"><span className="text-orange-400 font-bold "><BsPeople /></span><span className="font-extralight">{totalVisitorsPerYear}</span></p>
+            <p className="flex items-center gap-2"><span className=" font-bold "><BsPeople /></span><span className="font-extralight text-green-800">{totalVisitorsPerYear} Visitors Per Year</span></p>
           </div>
+          <div className="flex  items-center w-1/2 gap-2">
+                <p className="text-green-500">
+                  <CiLocationOn />
+                </p>
+                <p className="font-bold text-orange-400">{location}</p>
+                <p className="text-orange-400">,</p>
+                <p className="font-bold text-orange-400">{countryName}</p>
+              </div>
           <div className="flex items-center gap-4">
            <Link to={`/spotDetails/${_id}`}>
            <button className="border border-green-300 px-5 text-green-500 font-bold rounded-md flex items-center gap-2 hover:bg-green-900">VIEW DETAILS <span className="text-green-300"><FaArrowRightLong /></span></button>

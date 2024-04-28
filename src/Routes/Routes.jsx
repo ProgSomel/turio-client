@@ -31,7 +31,7 @@ const router = createBrowserRouter([
             element: <ProtectedRoute>
                 <TouristSpotDetails></TouristSpotDetails>
             </ProtectedRoute>,
-            loader: ({params})=> fetch(`http://localhost:5000/spots/${params.id}`)
+            loader: ({params})=>fetch(`http://localhost:5000/spots/${params.id}`)
         },
         {
             path: "/addTouristSpot",

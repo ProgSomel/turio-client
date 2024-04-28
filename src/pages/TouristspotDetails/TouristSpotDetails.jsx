@@ -2,18 +2,19 @@ import { useLoaderData } from "react-router-dom";
 import { CiLocationOn } from "react-icons/ci";
 const TouristSpotDetails = () => {
   const spot = useLoaderData();
+  console.log(spot);
+  console.log(spot.location);
 
   const {
-    
     imageUrl,
     touristsSpotName,
     averageCost,
     seasonality,
     travelTime,
     totalVisitorsPerYear,
-    
-countryName,
-location,
+
+    countryName,
+    location,
 
     shortDescription,
   } = spot;
@@ -31,7 +32,7 @@ location,
           <div data-aos="fade-down ">
             <div className="text-white text-center p-4  md:p-0">
               <h1 className="text-5xl md:text-9xl font-extrabold md:mb-8 text-green-600 ">
-                KEEP TRAVEL ON{" "}
+                KEEP TRAVEL ON
               </h1>
             </div>
           </div>
@@ -51,25 +52,25 @@ location,
                 <p className="text-gray-700 flex items-center">
                   <i className="feather icon-compass mr-2"></i>
                   <span className="font-bold">
-                    Spot:{" "}
-                    <span className="font-semibold">{touristsSpotName}</span>{" "}
+                    Spot:
+                    <span className="font-semibold">{touristsSpotName}</span>
                   </span>
                 </p>
                 <p className="text-gray-700 flex items-center">
                   <i className="feather icon-sun mr-2"></i>
-                  <span className="font-semibold">Seasonality: </span>{" "}
+                  <span className="font-semibold">Seasonality: </span>
                   {seasonality}
                 </p>
                 <p className="text-gray-700 flex items-center">
                   <i className="feather icon-clock mr-2"></i>
-                  <span className="font-semibold">Travel Time:</span>{" "}
+                  <span className="font-semibold">Travel Time:</span>
                   {travelTime}
                 </p>
                 <p className="text-gray-700 flex items-center">
                   <i className="feather icon-users mr-2"></i>
                   <span className="font-semibold">
                     Total Visitors Per Year:
-                  </span>{" "}
+                  </span>
                   {totalVisitorsPerYear}
                 </p>
               </div>
@@ -95,7 +96,9 @@ location,
               {/* Description */}
               <p className="text-gray-700 mb-6">{shortDescription}</p>
               <div className="flex items-center">
-                <p className="text-green-500"><CiLocationOn /></p>
+                <p className="text-green-500">
+                  <CiLocationOn />
+                </p>
                 <p className="font-bold text-orange-400">{location}</p>
                 <p>,</p>
                 <p className="font-bold text-orange-400">{countryName}</p>
@@ -116,17 +119,17 @@ location,
               </h3>
               <p className="text-gray-700 flex items-center mb-2">
                 <i className="feather icon-dollar-sign mr-2"></i>
-                <span className="font-semibold">Average Cost:</span>{" "}
+                <span className="font-semibold">Average Cost:</span>
                 {averageCost}
               </p>
               <p className="text-gray-700 flex items-center mb-2">
                 <i className="feather icon-sunrise mr-2"></i>
-                <span className="font-semibold">Best Time to Visit:</span>{" "}
+                <span className="font-semibold">Best Time to Visit:</span>
                 {seasonality}
               </p>
               <p className="text-gray-700 flex items-center mb-2">
                 <i className="feather icon-calendar mr-2"></i>
-                <span className="font-semibold">Recommended Duration:</span> 7
+                <span className="font-semibold">Recommended Duration:</span> 
                 {travelTime}
               </p>
               <p className="text-gray-700 flex items-center mb-2">
