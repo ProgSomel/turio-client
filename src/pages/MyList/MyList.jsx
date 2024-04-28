@@ -77,26 +77,47 @@ if(data.modifiedCount > 0) {
 
 const handleDelete = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/spots/${id}`, {
-        method: 'DELETE',
-    })
-    .then(res => res.json())
-    .then(data => {
-        if(data.deletedCount > 0) {
-            Swal.fire({
-                icon: "success",
-                title: "Success!",
-                text: "Spot Deleted Successfully",
-                confirmButtonText: "Cool",
-              });
-              const remaining = myLists?.filter((myList)=> myList._id !== id);
-              setMyList(remaining);
-        }
-    })
+
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+
+        fetch(`http://localhost:5000/spots/${id}`, {
+          method: 'DELETE',
+      })
+      .then(res => res.json())
+      .then(data => {
+        
+          if(data.deletedCount > 0) {
+              Swal.fire({
+                  icon: "success",
+                  title: "Success!",
+                  text: "Tourist Spot Deleted Successfully",
+                  confirmButtonText: "Cool",
+                });
+                const remaining = myLists?.filter((myList)=> myList._id !== id);
+                setMyList(remaining);
+          }
+      })
+
+        
+      }
+    });
+
+   
 }
 
   return (
-    <div className="flex justify-center my-12 max-w-6xl mx-auto px-5 md:px-2 shadow-xl min-h-screen">
+    <div className="flex justify-center py-12 max-w-6xl mx-auto px-5 md:px-2 shadow-xl min-h-screen">
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}

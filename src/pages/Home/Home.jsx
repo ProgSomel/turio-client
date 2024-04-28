@@ -10,11 +10,23 @@ import { Pagination } from "swiper/modules";
 import menLogo from "../../assets/icons/men.png"
 import { CiStar } from "react-icons/ci";
 
+import touristImg1 from "../../assets/images/tourists/tourist1.jpg";
+import touristImg2 from "../../assets/images/tourists/tourist2.jpg";
+import touristImg3 from "../../assets/images/tourists/tourist3.jpg";
+import touristImg4 from "../../assets/images/tourists/tourist4.jpg";
+import touristImg5 from "../../assets/images/tourists/tourist5.jpg";
+import touristImg6 from "../../assets/images/tourists/tourist6.jpg";
+
+
 
 
 // Import Swiper styles
+import 'swiper/css/navigation';
+// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import 'swiper/css/free-mode';
+import { FreeMode} from 'swiper/modules';
 
 
 //* eslint-disable react/no-unescaped-entities */
@@ -168,7 +180,7 @@ const Home = () => {
                       {reviews.map((review, idx) => (
                         <SwiperSlide className="" key={idx}>
                           <div className="">
-                            <div className="bg-[#00224D] h-full  text-neutral-content flex justify-center hover:bg-white  hover:text-black ">
+                            <div className="bg-[#00224D] h-full  text-neutral-content flex justify-center hover:bg-white  hover:text-black hover:cursor-pointer">
                               <div className="card-body  text-gray-400  mt-5   text-center">
                                 <p className="flex justify-center items-center text-red-400">
                                   {review.rating}{" "}
@@ -178,9 +190,9 @@ const Home = () => {
                                 </p>
 
                                 <Fade  cascade damping={1e-1}>
-                                <p className="text-white md:text-2xl hover:text-black">{review.review}</p>
+                                <p className=" md:text-2xl hover:text-black">{review.review}</p>
                                 </Fade>
-                                <Slide>
+                                <Slide direction="up">
                                 <div className="flex flex-col md:flex-row items-center gap-5 mt-5">
                                   <img
                                     className="w-[70px]"
@@ -208,6 +220,30 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+
+        {/* image slider  */}
+        <div className="mt-8 md:mt-16 mb-12">
+        <Swiper
+        slidesPerView={3}
+        spaceBetween={30}
+        freeMode={true}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[FreeMode, Pagination]}
+        className="mySwiper"
+      >
+        <SwiperSlide><img className="h-[150px] md:h-[250px] rounded-md" src={touristImg1} alt="" /></SwiperSlide>
+        <SwiperSlide><img className="h-[150px] md:h-[250px] rounded-md" src={touristImg2} alt="" /></SwiperSlide>
+        <SwiperSlide><img className="h-[150px] md:h-[250px] rounded-md" src={touristImg3} alt="" /></SwiperSlide>
+        <SwiperSlide><img className="h-[150px] md:h-[250px] rounded-md" src={touristImg4} alt="" /></SwiperSlide>
+        <SwiperSlide><img className="h-[150px] md:h-[250px] rounded-md" src={touristImg5} alt="" /></SwiperSlide>
+        <SwiperSlide><img className="h-[150px] md:h-[250px]" src={touristImg6} alt="" /></SwiperSlide>
+        
+      </Swiper>
+        </div>
+
     </div>
   );
 };

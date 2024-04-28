@@ -23,7 +23,7 @@ const AllTouristsSpot = () => {
 
   return (
     <div>
-      <div className="flex justify-center mt-16 px-4 md:px-0">
+      <div className="flex justify-center mt-16  px-4 md:px-0">
         <select
           className="select select-bordered w-full max-w-xs bg-green-500 text-white font-bold"
           value={sort}
@@ -36,7 +36,7 @@ const AllTouristsSpot = () => {
           <option value="desc">High to Low Average Cost</option>
         </select>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto px-5 md:px-2 gap-12  my-8 md:my-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto px-5 md:px-2 gap-12  py-8 ">
         {touristSpots?.map((spot) => (
           <AllTouristsSpotCard key={spot._id} spot={spot}></AllTouristsSpotCard>
         ))}
