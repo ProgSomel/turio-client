@@ -3,11 +3,39 @@ import { Link, useLoaderData } from "react-router-dom";
 import Banner from "./Banner/Banner";
 import SpotCard from "./SpotCard/SpotCard";
 import Countries from "./Countries/Countries";
-import { Slide } from "react-awesome-reveal";
+import { Fade, Slide } from "react-awesome-reveal";
 import contactImg from "../../assets/images/contact/contact.jpg";
+import reviewImg from "../../assets//images//reviews/review.jpg";
+import { Pagination } from "swiper/modules";
+import menLogo from "../../assets/icons/men.png"
+import { CiStar } from "react-icons/ci";
+
+
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
+
+//* eslint-disable react/no-unescaped-entities */
+import { useEffect, useState } from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
+
 
 const Home = () => {
   const spots = useLoaderData();
+  const [reviews, setReviews] = useState([]);
+  useEffect(() => {
+    fetch("reviews.json")
+      .then((response) => response.json())
+      .then((data) => setReviews(data));
+  }, []);
 
   return (
     <div>
@@ -15,7 +43,7 @@ const Home = () => {
 
       <div>
         <div className="flex flex-col md:flex-row items-center gap-0  max-w-6xl mx-auto px-5 md:px-2 ">
-          <div className="md:mt-12 flex-1">
+          <div className="md:mt-8 flex-1">
             <Slide>
               <h1 className="get text-center md:text-left text-green-800  ">
                 Perfect For You
@@ -83,16 +111,99 @@ const Home = () => {
               </Slide>
 
               <Slide>
-              <div className="join md:w-2/4">
-                <input
-                  className="input input-bordered join-item w-full"
-                  placeholder="Your email address"
-                />
-                <button className="btn join-item bg-green-500 text-white border-none font-bold">
-                  Subscribe
-                </button>
-              </div>
+                <div className="join md:w-2/4">
+                  <input
+                    className="input input-bordered join-item w-full"
+                    placeholder="Your email address"
+                  />
+                  <button className="btn join-item bg-green-500 text-white border-none font-bold">
+                    Subscribe
+                  </button>
+                </div>
               </Slide>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Reviews By Clients  */}
+      <div>
+        <div
+          className="relative bg-cover bg-center bg-no-repeat w-full "
+          style={{
+            backgroundImage: `url(${reviewImg})`,
+            backgroundSize: "cover",
+          }}
+        >
+          <div data-aos="fade-down ">
+            <div className="text-white min-h-screen max-w-6xl mx-auto px-5 md:px-2 py-8   md:py-20">
+             <Slide>
+             <h1 className="text-3xl md:w-4/5 md:text-6xl  font-extrabold md:mb-8 text-white ">
+                What Our Client Say About Us
+              </h1>
+             </Slide>
+
+              <Slide>
+              <p className="mb-6 w-3/4 md:mb-12 font-light lg:text-xl ">
+                Discover what sets us apart from the rest through the words of
+                our valued clients. At Turio, we prioritize customer
+                satisfaction above all else.
+              </p>
+              </Slide>
+
+              {/* review Card  */}
+              <div data-aos="flip-left">
+                <div className="">
+                  
+                  <div>
+                    <Swiper
+                      slidesPerView={2}
+                      spaceBetween={30}
+                      pagination={{
+                        clickable: true,
+                      }}
+                      modules={[Pagination]}
+                      className="w-full max-w-6xl h-[800px] md:h-[400px] lg:h-[350px] mx-auto "
+                    >
+                      {reviews.map((review, idx) => (
+                        <SwiperSlide className="" key={idx}>
+                          <div className="">
+                            <div className="bg-[#00224D] h-full  text-neutral-content flex justify-center hover:bg-white  hover:text-black ">
+                              <div className="card-body  text-gray-400  mt-5   text-center">
+                                <p className="flex justify-center items-center text-red-400">
+                                  {review.rating}{" "}
+                                  <span className="text-orange-700 ">
+                                    <CiStar />
+                                  </span>{" "}
+                                </p>
+
+                                <Fade  cascade damping={1e-1}>
+                                <p className="text-white md:text-2xl hover:text-black">{review.review}</p>
+                                </Fade>
+                                <Slide>
+                                <div className="flex flex-col md:flex-row items-center gap-5 mt-5">
+                                  <img
+                                    className="w-[70px]"
+                                    src={menLogo}
+                                    alt=""
+                                  />
+                                  <div>
+                                    <p className="text-2xl font-bold">
+                                      {review.name}
+                                    </p>
+                                    <p>{review.occupation}</p>
+                                  </div>
+                                </div>
+                                </Slide>
+                              </div>
+                            </div>
+                          </div>
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
