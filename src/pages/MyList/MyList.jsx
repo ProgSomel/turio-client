@@ -96,7 +96,7 @@ const handleDelete = (id) => {
 }
 
   return (
-    <div className="flex justify-center my-12 max-w-6xl mx-auto px-4 md:px-2 shadow-xl min-h-screen">
+    <div className="flex justify-center my-12 max-w-6xl mx-auto px-5 md:px-2 shadow-xl min-h-screen">
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}

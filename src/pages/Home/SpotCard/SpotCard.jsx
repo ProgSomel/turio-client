@@ -21,7 +21,7 @@ const SpotCard = ({ spot }) => {
 
   return (
     <div className="">
-      <div className="card h-[550px]  bg-base-100 shadow-xl">
+      <div className="card h-[570px]  bg-base-100 shadow-xl">
         <div className="relative">
         <figure>
 

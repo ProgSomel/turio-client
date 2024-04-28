@@ -20,11 +20,11 @@ const TouristSpotsByCountry = () => {
   }, [countryName.countryName]);
 
   return (
-    <div>
+    <div className="mb-12">
         <div>
             <h1 className="text-center mt-8 text-5xl font-extrabold px-2">Tourist Spots By Country</h1>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto px-4 md:px-2 gap-12 h-screen my-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto px-5 md:px-2 gap-12 h-screen my-12">
       {spots?.map((spot) => (
         <div key={spot._id} className="card h-[720px]  bg-base-100 shadow-xl">
           <div className="relative">

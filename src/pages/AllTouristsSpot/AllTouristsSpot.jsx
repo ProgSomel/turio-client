@@ -36,7 +36,7 @@ const AllTouristsSpot = () => {
           <option value="desc">High to Low Average Cost</option>
         </select>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto px-4 md:px-2 gap-12  my-8 md:my-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto px-5 md:px-2 gap-12  my-8 md:my-16">
         {touristSpots?.map((spot) => (
           <AllTouristsSpotCard key={spot._id} spot={spot}></AllTouristsSpotCard>
         ))}

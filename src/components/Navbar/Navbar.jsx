@@ -65,11 +65,11 @@ const Navbar = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 md:px-2 mt-5">
-      <div className="navbar bg-base-100">
-        <div className="navbar-start">
+    <div className="max-w-6xl mx-auto px-5 md:px-2 mb-5 pt-5">
+      <div className="navbar bg-base-100 ">
+        <div className="navbar-start z-20">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -93,7 +93,7 @@ const Navbar = () => {
 
             {
                 user ? 
-                <div className="navbar-end w-full mt-5  flex  justify-center md:hidden">
+                <div className="navbar-end w-full mt-5  flex  justify-center md:hidden ">
                   {/*! Profile  */}
                   <div className="">
                     <div className="dropdown dropdown-end  ">

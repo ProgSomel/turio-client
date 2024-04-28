@@ -23,7 +23,7 @@ const Countries = () => {
                 <p className="w-3/4 mx-auto my-5 font-light">Embark on a journey through the vibrant landscapes and rich cultures of our top countries. From the bustling streets of Bangkok to the tranquil shores of Bali, each destination offers a unique tapestry of experiences waiting to be discovered.</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto px-4 md:px-2 gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto px-5 md:px-2 gap-12">
                 {
                     countries?.map((country)=> (
                         <Link to={`/touristSpotByCountry/${country?.countryName}`} key={country._id} className="">
