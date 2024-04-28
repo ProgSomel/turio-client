@@ -6,7 +6,6 @@ import { PropTypes } from "prop-types";
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   const location = useLocation();
-  console.log(location.pathname);
   if (user) {
     return children;
   }

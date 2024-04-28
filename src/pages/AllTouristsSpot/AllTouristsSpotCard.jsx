@@ -54,7 +54,7 @@ const AllTouristsSpotCard = ({spot}) => {
                 <p className="font-bold text-orange-400">{countryName}</p>
               </div>
           <div className="flex items-center gap-4">
-           <Link to={`/spotDetails/${_id}`}>
+           <Link to={`/spotDetails/${_id}`} state={touristsSpotName}>
            <button className="border border-green-300 px-5 text-green-500 font-bold rounded-md flex items-center gap-2 hover:bg-green-900">VIEW DETAILS <span className="text-green-300"><FaArrowRightLong /></span></button>
            </Link>
             <div>

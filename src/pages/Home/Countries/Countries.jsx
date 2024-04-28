@@ -33,10 +33,10 @@ const Countries = () => {
         </Slide>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto px-5 md:px-2 gap-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto px-5 md:px-2 gap-12 ">
         {countries?.map((country) => (
           <Link
-            to={`/touristSpotByCountry/${country?.countryName}`}
+            to={`/touristSpotByCountry/${country?.countryName}` } state={country?.countryName}
             key={country._id}
             className=""
           >

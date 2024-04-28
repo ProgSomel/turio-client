@@ -2,8 +2,8 @@ import { useLoaderData } from "react-router-dom";
 import { CiLocationOn } from "react-icons/ci";
 const TouristSpotDetails = () => {
   const spot = useLoaderData();
-  console.log(spot);
-  console.log(spot.location);
+
+
 
   const {
     imageUrl,

@@ -7,7 +7,6 @@ const MyList = () => {
   const { user } = useContext(AuthContext);
   const [myLists, setMyList] = useState([]);
 
-  console.log(user?.email);
   useEffect(() => {
     fetch(`http://localhost:5000/spots?email=${user?.email}`)
       .then((res) => res.json())
@@ -18,7 +17,6 @@ const MyList = () => {
 
 
   const handleSubmit = (e, id) => {
-    console.log(id);
     e.preventDefault();
     const form = e.target;
     const imageUrl = form.imageUrl.value;
@@ -56,7 +54,6 @@ body: JSON.stringify(spotsData)
 })
 .then(res => res.json())
 .then(data => {
-console.log(data);
 if(data.modifiedCount > 0) {
     toast.success('Spot Successfully Updated', {
         position: 'top-left',
@@ -76,7 +73,6 @@ if(data.modifiedCount > 0) {
 
 
 const handleDelete = (id) => {
-    console.log(id);
 
 
     Swal.fire({
