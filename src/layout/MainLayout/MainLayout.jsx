@@ -6,26 +6,24 @@ import Footer from "../../components/Footer/Footer";
 const MainLayout = () => {
   const [darkMode, setDarkMode] = useState(false);
   const loc = useLocation();
-  console.log(loc);
-  useEffect(()=> {
-    if(loc.pathname === "/") {
-        document.title = `Home`
-    }else {
-        document.title = `${loc.pathname.replace('/', '')}`
+  useEffect(() => {
+    if (loc.pathname === "/") {
+      document.title = `Home`;
+    } else {
+      document.title = `${loc.pathname.replace("/", "")}`;
     }
 
-    if(loc.state) {
-        document.title = loc.state
+    if (loc.state) {
+      document.title = loc.state;
     }
-    
-  }, [loc.pathname])
+  }, [loc.pathname]);
 
   const toggleTheme = () => {
     setDarkMode(!darkMode);
   };
 
   return (
-    <div className={darkMode ? "bg-black text-red-400 " : "" }>
+    <div className={darkMode ? "bg-black text-red-400 " : ""}>
       <div
         className={
           darkMode

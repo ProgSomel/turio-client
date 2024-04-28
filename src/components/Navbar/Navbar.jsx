@@ -115,11 +115,11 @@ const Navbar = () => {
                   </Link>
                 </div>
                  : 
-                <div className="navbar-end mt-3 gap-2 flex flex-col lg:hidden w-full">
-         <Link className="w-full" to="login">
+                <div className="navbar-end mt-3 gap-2 flex flex-col md:hidden w-full">
+         <Link className="w-full" to="/login">
          <button className="btn w-full bg-green-700 text-white font-bold ">Login</button>
          </Link>
-          <Link className="w-full" to="/regsiter"> 
+          <Link className="w-full" to="/register"> 
           <button className="btn w-full bg-green-700 text-white font-bold">Register</button>
           </Link>
         </div>
@@ -164,10 +164,10 @@ const Navbar = () => {
             : 
             <div className="navbar-end  gap-5 hidden md:flex">
           <Link to="/login">
-          <button className="btn bg-green-700 text-white font-bold">Login</button>
+          <button className="btn bg-green-700 text-white font-bold hover:bg-green-200 hover:cursor-pointer ">Login</button>
           </Link>
          <Link to="/register">
-         <button className="btn bg-green-700 text-white font-bold">Register</button>
+         <button className="btn bg-green-700 hover:bg-green-200 text-white font-bold ">Register</button>
          </Link>
         </div>
         }
