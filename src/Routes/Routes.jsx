@@ -9,6 +9,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import Home from "../pages/Home/Home";
 import TouristSpotDetails from "../pages/TouristspotDetails/TouristSpotDetails";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import TouristSpotsByCountry from "../pages/TouristSpotsByCountry/TouristSpotsByCountry";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
             element: <ProtectedRoute>
                 <MyList></MyList>
             </ProtectedRoute>
+        },
+        {
+            path: "/touristSpotByCountry/:countryName",
+            element: <TouristSpotsByCountry></TouristSpotsByCountry>
         },
         {
             path: "/login",

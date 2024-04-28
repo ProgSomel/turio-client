@@ -31,7 +31,7 @@ const Countries = () => {
           <div data-aos="fade-down ">
           <div className="text-white text-center p-4  md:p-0">
             
-            <h1 className="text-5xl  font-extrabold md:mb-8 text-green-600 ">{country?.countryName} </h1>
+            <h1 className="text-4xl md:text-5xl  font-extrabold md:mb-8 text-green-600 ">{country?.countryName} </h1>
             
             <p className="mb-6 md:mb-12 font-extrabold lg:text-xl w-full   lg:mx-auto">{country?.shortDescription}
             </p>
