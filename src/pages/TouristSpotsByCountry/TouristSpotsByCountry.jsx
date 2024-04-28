@@ -26,7 +26,7 @@ const TouristSpotsByCountry = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto px-5 md:px-2 gap-12 h-screen my-12">
       {spots?.map((spot) => (
-        <div key={spot._id} className="card h-[720px]  bg-base-100 shadow-xl">
+        <div key={spot._id} className="card h-[800px]  bg-base-100 shadow-xl">
           <div className="relative">
             <figure>
               <img

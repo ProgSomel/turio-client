@@ -4,6 +4,8 @@ import { BsPeople } from "react-icons/bs";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { TiWeatherCloudy } from "react-icons/ti";
 import { Link } from "react-router-dom";
+import 'animate.css';
+<link rel="stylesheet" href="bower_components/aos/dist/aos.css" />
 
 const SpotCard = ({ spot }) => {
   const {
@@ -20,8 +22,8 @@ const SpotCard = ({ spot }) => {
   } = spot;
 
   return (
-    <div className="">
-      <div className="card h-[570px]  bg-base-100 shadow-xl">
+    <div className="animate__animated animate__bounce">
+      <div data-aos="fade-up"  className="card h-[570px]  bg-base-100 shadow-xl">
         <div className="relative">
         <figure>
 
